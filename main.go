@@ -59,12 +59,25 @@ func createLaundry(w http.ResponseWriter, r *http.Request){
 	json.NewEncoder(w).Encode(laundry)
 
 }
-
+// Update a laundry
 func updateLaundry(w http.ResponseWriter, r *http.Request){
-	
+	w.Header().Set("Content-Type", "application.json")
+	params := mux.Vars(r)
+	for index, item := range laundries{   //this part comes from deleting a laudry 
+		if item.ID == params["id"]{
+			laundries = append(laundries[:index], laundries[index+1:]...)
+			var laundry Laundry
+	_ = json.NewDecoder(r.Body).Decode(&laundry)
+	laundry.ID = strconv.Itoa(rand.Intn(10000)) //this part comes from create a new laundry
+	laundries = append(laundries, laundry)
+	json.NewEncoder(w).Encode(laundry)
+	return
+	}
+}
+json.NewEncoder(w).Encode(laundries)
 
 }
-
+// delete a laundry
 func deleteLaundry(w http.ResponseWriter, r *http.Request){
 	w.Header().Set("Content-Type", "application.json")
 	params := mux.Vars(r)
