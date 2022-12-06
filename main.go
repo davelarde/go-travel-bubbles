@@ -66,7 +66,15 @@ func updateLaundry(w http.ResponseWriter, r *http.Request){
 }
 
 func deleteLaundry(w http.ResponseWriter, r *http.Request){
-	
+	w.Header().Set("Content-Type", "application.json")
+	params := mux.Vars(r)
+	for index, item := range laundries{
+		if item.ID == params["id"]{
+		laundries = append(laundries[:index], laundries[index+1:]...)
+		break
+		}
+	}
+	json.NewEncoder(w).Encode(laundries)
 
 }
 
