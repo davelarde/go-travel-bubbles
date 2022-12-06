@@ -5,8 +5,8 @@ import(
 	"log"
 	"encoding/json"
 	"net/http"
-	_ "math/rand"
-	_ "strconv" 
+	 "math/rand"
+	 "strconv" 
 	"github.com/gorilla/mux"
 	"io"
 )  
@@ -35,10 +35,19 @@ func getLaundries(w http.ResponseWriter, r *http.Request){
 	json.NewEncoder(w).Encode(laundries)
 
 }
+// get single laundry
 
 func getLaundry(w http.ResponseWriter, r *http.Request){
-	
-
+	w.Header().Set("Content-Type", "application.json")
+	params := mux.Vars(r)  //get the params
+	//loop through all laundries and find it by id
+	for _, item := range laundries {
+		if item.ID == params["id"]{
+			json.NewEncoder(w).Encode(item)
+			return
+		}
+	}
+json.NewEncoder(w).Encode(&Laundry{})
 }
 
 func createLaundry(w http.ResponseWriter, r *http.Request){
