@@ -3,7 +3,7 @@ package main
 import(
 	_ "fmt"
 	"log"
-	_ "encoding/json"
+	"encoding/json"
 	"net/http"
 	_ "math/rand"
 	_ "strconv" 
@@ -31,7 +31,8 @@ func laundryPage(w http.ResponseWriter, r *http.Request){
 }
 // get all laundries
 func getLaundries(w http.ResponseWriter, r *http.Request){
-
+    w.Header().Set("Content-Type", "application.json")
+	json.NewEncoder(w).Encode(laundries)
 
 }
 
