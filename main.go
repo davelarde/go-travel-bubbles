@@ -51,7 +51,12 @@ json.NewEncoder(w).Encode(&Laundry{})
 }
 
 func createLaundry(w http.ResponseWriter, r *http.Request){
-	
+	w.Header().Set("Content-Type", "application.json")
+	var laundry Laundry
+	_ = json.NewDecoder(r.Body).Decode(&laundry)
+	laundry.ID = strconv.Itoa(rand.Intn(10000)) //mock id, not really used in production, use it only for test 
+	laundries = append(laundries, laundry)
+	json.NewEncoder(w).Encode(laundry)
 
 }
 
