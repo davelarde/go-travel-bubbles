@@ -68,7 +68,7 @@ func updateLaundry(w http.ResponseWriter, r *http.Request){
 			laundries = append(laundries[:index], laundries[index+1:]...)
 			var laundry Laundry
 	_ = json.NewDecoder(r.Body).Decode(&laundry)
-	laundry.ID = strconv.Itoa(rand.Intn(10000)) //this part comes from create a new laundry
+	laundry.ID = params["id"] //this part comes from create a new laundry
 	laundries = append(laundries, laundry)
 	json.NewEncoder(w).Encode(laundry)
 	return
