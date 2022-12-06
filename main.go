@@ -1,13 +1,14 @@
 package main
 
 import(
-	"fmt"
+	_ "fmt"
 	"log"
-	"encoding/json"
+	_ "encoding/json"
 	"net/http"
-	"math/rand"
-	"strconv" 
+	_ "math/rand"
+	_ "strconv" 
 	"github.com/gorilla/mux"
+	"io"
 )  
 
 // laundry struct(models)
@@ -22,15 +23,45 @@ type Location struct{
 	Country string `json:country`
 	City string `json:city`
 }
+func laundryPage(w http.ResponseWriter, r *http.Request){
+    io.WriteString(w, "Happy Bubbles!")
+}
+// get all laundries
+func getLaundries(w http.ResponseWriter, r *http.Request){
+
+
+}
+
+func getLaundry(w http.ResponseWriter, r *http.Request){
+	
+
+}
+
+func createLaundry(w http.ResponseWriter, r *http.Request){
+	
+
+}
+
+func updateLaundry(w http.ResponseWriter, r *http.Request){
+	
+
+}
+
+func deleteLaundry(w http.ResponseWriter, r *http.Request){
+	
+
+}
+
 func main(){
 	// initializing mux router
 	r := mux.NewRouter() 
 
 	// Route handlers /end points
-	r.HandleFunc("/api/laundries", getLaundries).Methods("GET")
-	r.HandleFunc("/api/laundries/{id}", getLaundry).Methods("GET")
-	r.HandleFunc("/api/laundries", createLaundry).Methods("POST")
-	r.HandleFunc("/api/laundries/{id}", updateLaundry).Methods("PUT")
-	r.HandleFunc("/api/laundries/{id}", deleteLaundry).Methods("DELETE")
+	r.HandleFunc("/", laundryPage)
+	r.HandleFunc("/laundries", getLaundries).Methods("GET")
+	r.HandleFunc("/laundries/{id}", getLaundry).Methods("GET")
+	r.HandleFunc("/laundries", createLaundry).Methods("POST")
+	r.HandleFunc("/laundries/{id}", updateLaundry).Methods("PUT")
+	r.HandleFunc("/laundries/{id}", deleteLaundry).Methods("DELETE")
 	log.Fatal(http.ListenAndServe(":8000", r))
 }
