@@ -8,9 +8,14 @@ import(
 	 "math/rand"
 	 "strconv" 
 	"github.com/gorilla/mux"
-	"io"
+	"html/template"
+	
 )  
+var tpl *template.Template
 
+func init(){
+	tpl = template.Must(template.ParseGlob("templates/*.html"))
+}
 // laundry struct(models)
  type Laundry struct{
 	ID string `json:id`
@@ -27,7 +32,7 @@ type Location struct{
 // init laundries var as alice Laundry struct
 var laundries []Laundry
 func laundryPage(w http.ResponseWriter, r *http.Request){
-    io.WriteString(w, "Happy Bubbles!")
+    tpl.ExecuteTemplate(w, "index.html", nil)
 }
 // get all laundries
 func getLaundries(w http.ResponseWriter, r *http.Request){
@@ -116,6 +121,10 @@ laundries = append(laundries, Laundry{ID: "9", Laundrycode:"202204", Name: "Lava
 laundries = append(laundries, Laundry{ID: "10", Laundrycode:"444444", Name: "Aguayo", Location: &Location{Country: "Bolivia", City:"La Paz"}})
 
 	// Route handlers /end points
+    // fs:= http.FileServer(http.Dir("./assets/"))
+	// http.Handle("/assets/", http.StripPrefix("/assets/", fs))
+	r.PathPrefix("/assets/").Handler(http.StripPrefix("/assets/", http.FileServer(http.Dir("./assets/"))))
+
 	r.HandleFunc("/", laundryPage)
 	r.HandleFunc("/laundries", getLaundries).Methods("GET")
 	r.HandleFunc("/laundries/{id}", getLaundry).Methods("GET")
