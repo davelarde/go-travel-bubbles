@@ -74,7 +74,7 @@ nav ul li a:hover {
 
 }
 
-.content button{
+.content  a{
     text-decoration: none;
     display: inline;
     justify-content: space-between;
@@ -86,4 +86,69 @@ nav ul li a:hover {
     padding: 10px;
     background: rgba(23, 159, 212, 0.823);
     
+}
+
+form {
+	margin:10% auto 0 auto;
+	padding:30px;
+	width:400px;
+	height:auto;
+	overflow:hidden;
+	background: url("https://thumbs.dreamstime.com/b/blue-water-bubbles-abstract-light-illumination-53164601.jpg");
+  background-size: cover;
+	border-radius:10px;
+}
+
+form input  {
+	margin:15px 0;
+	padding:15px 10px;
+	width:100%;
+	outline:none;
+	border:1px solid #bbb;
+	border-radius:20px;
+	display:inline-block;
+    background: white;
+	-webkit-box-sizing:border-box;
+	   -moz-box-sizing:border-box;
+	        box-sizing:border-box;
+    -webkit-transition:0.2s ease all;
+	   -moz-transition:0.2s ease all;
+	    -ms-transition:0.2s ease all;
+	     -o-transition:0.2s ease all;
+	        transition:0.2s ease all;
+}
+
+form input[type=text]:focus,
+form input[type="text"]:focus {
+	border-color:cornflowerblue;
+}
+label{
+    color: black;
+    font-weight: 600;
+    background: transparent;
+}
+input[type=submit] {
+	padding:15px 50px;
+	width:auto;
+	background:white;
+	border:none;
+    font-weight: 600;
+	color:rgba(23, 159, 212, 0.823);
+	cursor:pointer;
+	display:inline-block;
+	float:right;
+	clear:right;
+	-webkit-transition:0.2s ease all;
+	   -moz-transition:0.2s ease all;
+	    -ms-transition:0.2s ease all;
+	     -o-transition:0.2s ease all;
+	        transition:0.2s ease all;
+}
+
+input[type=submit]:hover {
+	opacity:0.8;
+}
+
+input[type="submit"]:active {
+	opacity:0.4;
 }

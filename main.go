@@ -34,6 +34,20 @@ var laundries []Laundry
 func laundryPage(w http.ResponseWriter, r *http.Request){
     tpl.ExecuteTemplate(w, "index.html", nil)
 }
+
+func formPage(w http.ResponseWriter, r *http.Request){
+    tpl.ExecuteTemplate(w, "form.html", nil)
+}
+
+//page for form
+// func formHandler(w http.ResponseWriter, r *http.Request){
+// 	if r.Method !="POST"{
+// 		http.Redirect(w, r, "/", http.StatusSeeOther)
+// 		return
+// 	}
+	
+
+// }
 // get all laundries
 func getLaundries(w http.ResponseWriter, r *http.Request){
     w.Header().Set("Content-Type", "application.json")
@@ -126,6 +140,8 @@ laundries = append(laundries, Laundry{ID: "10", Laundrycode:"444444", Name: "Agu
 	r.PathPrefix("/assets/").Handler(http.StripPrefix("/assets/", http.FileServer(http.Dir("./assets/"))))
 
 	r.HandleFunc("/", laundryPage)
+	r.HandleFunc("/form", formPage)
+	// r.HandleFunc("/form", formHandler)
 	r.HandleFunc("/laundries", getLaundries).Methods("GET")
 	r.HandleFunc("/laundries/{id}", getLaundry).Methods("GET")
 	r.HandleFunc("/laundries", createLaundry).Methods("POST")
