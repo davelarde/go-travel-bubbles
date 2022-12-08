@@ -1,3 +1,12 @@
-h1{
-    color: red;
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box; 
+     font-family: 'Poppins', sans-serif;
+     background: url("https://img.freepik.com/premium-photo/beautiful-young-woman-is-meditating-while-doing-laundry-home_566707-2152.jpg?w=2000") no-repeat center center fixed;
+     -webkit-background-size: cover;
+     -moz-background-size:cover;
+     -o-background-size: cover;
+     background-size: cover;
 }
+
