@@ -39,6 +39,9 @@ func formPage(w http.ResponseWriter, r *http.Request){
     tpl.ExecuteTemplate(w, "form.html", nil)
 }
 
+func aboutPage(w http.ResponseWriter, r *http.Request){
+    tpl.ExecuteTemplate(w, "about.html", nil)
+}
 // get all laundries
 func getLaundries(w http.ResponseWriter, r *http.Request){
     w.Header().Set("Content-Type", "application.json")
@@ -163,6 +166,7 @@ laundries = append(laundries, Laundry{ID: "10", Laundrycode:"444444", Name: "Agu
 
 	r.HandleFunc("/", laundryPage)
 	r.HandleFunc("/form", formPage)
+	r.HandleFunc("/about", aboutPage)
 	// r.HandleFunc("/welcome", formHandler)
 	r.HandleFunc("/laundries", getLaundries).Methods("GET")
 	r.HandleFunc("/laundries/{id}", getLaundry).Methods("GET")
