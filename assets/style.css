@@ -88,6 +88,12 @@ nav ul li a:hover {
     
 }
 
+h2{
+    font-size: 100px;
+    color: rgba(23, 159, 212, 0.823);
+    font-weight: 600;
+}
+
 form {
 	margin:10% auto 0 auto;
 	padding:30px;
@@ -123,9 +129,11 @@ form input[type="text"]:focus {
 	border-color:cornflowerblue;
 }
 label{
-    color: black;
+    color:darkblue;
     font-weight: 600;
     background: transparent;
+    display: flex;
+    justify-content: center;
 }
 input[type=submit] {
 	padding:15px 50px;
@@ -133,7 +141,7 @@ input[type=submit] {
 	background:white;
 	border:none;
     font-weight: 600;
-	color:rgba(23, 159, 212, 0.823);
+	color:darkblue;
 	cursor:pointer;
 	display:inline-block;
 	float:right;
@@ -152,3 +160,15 @@ input[type=submit]:hover {
 input[type="submit"]:active {
 	opacity:0.4;
 }
+
+form h1{
+    background: transparent;
+    padding: 18px;
+    color: darkblue;
+}
+
+
+
+
+
+  
