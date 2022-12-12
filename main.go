@@ -24,11 +24,8 @@ func init(){
 	Name string `json:name`
 	Country string `json:country`
 	City string `json:city`
-	// Location *Location `json:location`
+	
  }
-//  location struct
-// type Location struct{
-// }
 
 // init laundries var as alice Laundry struct
 var laundries []Laundry
@@ -45,33 +42,6 @@ func aboutPage(w http.ResponseWriter, r *http.Request){
 }
 // get all laundries
 func getLaundries(w http.ResponseWriter, r *http.Request){
-	
-	// tpl.ExecuteTemplate(w, "laundries.html",laundries)
-	// body, error := io.Reader(r.Body)([]byte, error)
-	// if error!= nil{
-	// 	tpl.Execute(w, nil)
-	// }
-	// r.Body.Close()
-	// fmt.Println(string(body)) // option 1
-	// pd := laundries{
-	// 	Laundrycode : r.
-	// 	Name: 
-	// 	Country:
-	// 	City:
-	// }
-	// data, _:=ioutil.ReadAll(response.body),
-	// laundries.Laundrycode == string(data),
-	// laundries.Name == string(data),
-	// laundries.Country == string(data),
-	// laundries.City == string(data),
-	// fmt.Println(string(data)) //option 2
-	// laundriesPage := Laundry{ // option 3
-	// 	Laundrycode : Laundrycode,
-	// 	Name : Name,
-	// 	Country: Country,
-	// 	City: City,
-	// }
-	
 	tpl.ExecuteTemplate(w, "laundries.html", laundries)
     w.Header().Set("Content-Type", "application.json")
 	json.NewEncoder(w).Encode(laundries)
@@ -80,8 +50,7 @@ func getLaundries(w http.ResponseWriter, r *http.Request){
 // get single laundry
 
 func getLaundry(w http.ResponseWriter, r *http.Request){
-
-	w.Header().Set("Content-Type", "application.json")
+     w.Header().Set("Content-Type", "application.json")
 	params := mux.Vars(r)  //get the params
 	//loop through all laundries and find it by id
 	for _, item := range laundries {
@@ -110,13 +79,13 @@ func createLaundry(w http.ResponseWriter, r *http.Request){
 	tpl.ExecuteTemplate(w, "welcome.html", details)
 	w.Header().Set("Content-Type", "application.json")
 	var laundry Laundry
-	_ = json.NewDecoder(r.Body).Decode(&laundry)
 	laundry.ID = strconv.Itoa(rand.Intn(10000)) //mock id, not really used in production, use it only for test 
 	laundry.Name = details.Name
 	laundry.Laundrycode = details.Laundrycode
 	laundry.Country = details.Country
 	laundry.City = details.City
 	
+	_ = json.NewDecoder(r.Body).Decode(&laundry)
 	laundries = append(laundries, laundry)
 	json.NewEncoder(w).Encode(laundry)
 	
