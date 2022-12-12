@@ -44,9 +44,9 @@ func aboutPage(w http.ResponseWriter, r *http.Request){
 }
 // get all laundries
 func getLaundries(w http.ResponseWriter, r *http.Request){
+	tpl.ExecuteTemplate(w, "laundries.html",laundries)
     w.Header().Set("Content-Type", "application.json")
 	json.NewEncoder(w).Encode(laundries)
-
 }
 // get single laundry
 
@@ -75,16 +75,8 @@ func createLaundry(w http.ResponseWriter, r *http.Request){
 		Country: r.PostFormValue("country"),
 		City: r.PostFormValue("city"),
 		
-
-	
 	}
-		// fmt.Fprintf(w, "Name = %s\n",r.PostFormValue("laundryCode"))
-
-
-		// *Location : r.PostFormValue("country"),
-		// Location :r.PostFormValue("city"),
 	
-
 		tpl.ExecuteTemplate(w, "welcome.html", details)
 		w.Header().Set("Content-Type", "application.json")
 		var laundry Laundry

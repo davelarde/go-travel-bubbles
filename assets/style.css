@@ -75,6 +75,9 @@ nav ul li a:hover {
 
 }
 
+
+
+
  h3{
     background: white;
     padding: 10px;
@@ -102,11 +105,11 @@ nav ul li a:hover {
     
 }
 
-h2{
-    font-size: 100px;
+/* h2{
+    font-size: 40px;
     color: rgba(23, 159, 212, 0.823);
     font-weight: 600;
-}
+} */
 
 form {
 	margin:10% auto 0 auto;
