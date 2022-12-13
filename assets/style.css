@@ -76,15 +76,6 @@ nav ul li a:hover {
 
 }
 
-.cards{
-    border-style: dotted;
-    text-align: center;
-    width:60% ;
-    margin-left: 150px ;
-    margin-right:150px ;
-}
-
-
  h3{
     background: white;
     padding: 10px;
@@ -92,7 +83,7 @@ nav ul li a:hover {
     align-items: center;
     margin-left: 150px ;
     margin-right:150px ;
-    height: 100vh;
+    /* height: 100vh; */
 }
  img{
     width: 40%;
