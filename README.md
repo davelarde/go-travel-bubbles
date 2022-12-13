@@ -25,7 +25,7 @@ As a person who had travel the world, I want an app for travelers to find all la
 Please find below a quick video on how this app works. After this video, I suggest you to get .mp4 extension to watch it. 
 
 
-["Buddygram"](./demos/buddygram%20video.mp4)
+["Travel Bubble"](https://www.loom.com/share/767feb75ae2249ea9db2024ad587e7ad)
 
 
 
