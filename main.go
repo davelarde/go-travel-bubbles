@@ -11,6 +11,7 @@ import(
 	"html/template"
 	_"io"
 	
+	
 )  
 var tpl *template.Template
 
@@ -42,7 +43,8 @@ func aboutPage(w http.ResponseWriter, r *http.Request){
 }
 // get all laundries
 func getLaundries(w http.ResponseWriter, r *http.Request){
-	tpl.ExecuteTemplate(w, "laundries.html", laundries)
+	
+	tpl.ExecuteTemplate(w, "laundries.html",laundries)
     w.Header().Set("Content-Type", "application.json")
 	json.NewEncoder(w).Encode(laundries)
 	
